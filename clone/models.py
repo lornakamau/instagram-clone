@@ -50,3 +50,16 @@ class Comment(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ForeignKey(Image, on_delete= models.CASCADE, related_name = "comments")
+
+    def __str__(self):
+        return self.content
+
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
+
+    @classmethod
+    def get_image_comments(cls,image):
+        return cls.objects.filter(image =image)
