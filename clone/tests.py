@@ -52,3 +52,36 @@ class ProfileTestClas(TestCase):
     def test_search_user(self):
         user = Profile.search_user(self.lorna)
         self.assertEqual(len(user), 1)
+
+class CommentTestClas(TestCase):
+    def setUp(self):
+        self.lorna = User(username = "lorna", email = "lorna@gmail.com",password = "1234")
+        self.food = Image(image = 'imageurl', name ='food', caption = 'Chicken Taco', profile = self.lorna)
+        self.comment = Comment(image=self.food, content= 'Looks delicious', user = self.lorna)
+
+        self.lorna.save()
+        self.food.save_image()
+        self.comment.save_comment()
+
+    def tearDown(self):
+        Image.objects.all().delete()
+        Comment.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.comment, Comment))
+
+    def test_save_comment(self):
+        comments = Comment.objects.all()
+        self.assertTrue(len(comments)> 0)
+
+    def test_delete_comment(self):
+        comments1 = Comment.objects.all()
+        self.assertEqual(len(comments1),1)
+        self.comment.delete_comment()
+        comments2 = Comment.objects.all()
+        self.assertEqual(len(comments2),0)
+
+    def test_get_image_comments(self):
+        comments = Comment.get_image_comments(self.food)
+        self.assertEqual(comments[0].content, 'Looks delicious')
+        self.assertTrue(len(comments) > 0)
