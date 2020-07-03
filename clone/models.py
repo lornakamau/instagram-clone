@@ -44,3 +44,9 @@ class Profile(models.Model):
     @classmethod
     def search_user(cls,username): 
         return User.objects.filter(username__icontains = username)
+
+class Comment(models.Model):
+    content = models.TextField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, on_delete= models.CASCADE, related_name = "comments")
