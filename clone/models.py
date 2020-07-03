@@ -32,3 +32,8 @@ class Image(models.Model):
 
     class Meta:
         ordering = ['-post_date']
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    profile_pic = CloudinaryField('image')
+    bio =  models.TextField(blank=True)
