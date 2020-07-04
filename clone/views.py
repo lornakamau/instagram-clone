@@ -49,3 +49,13 @@ def search(request):
         message = "You haven't searched for any term"
         return render(request,'profile/profile.html', {"message": message})
 
+@login_required
+def comment(request, image_id):
+    image = Image.objects.get(pk=image_id)
+    content= request.GET.get("comment")
+    print(content)
+    user = request.user
+    comment = Comment( image = image, content = content, user = user)
+    comment.save_comment()
+
+    return redirect('home')
