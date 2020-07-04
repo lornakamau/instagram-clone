@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Image, Profile, Comment
@@ -8,12 +8,12 @@ from .forms import UploadImageForm
 @login_required(login_url='/accounts/login/')
 def home(request):
     title= "Instagram"
-    images = Images.objects.all()
+    images = Image.objects.all()
     comments = Comment.objects.all()
     return render(request, 'home.html', {"images": images, "comments": comments})
 
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'profile/profile.html')
 
 @login_required(login_url='/accounts/login/')
 def upload_image(request):
@@ -27,4 +27,6 @@ def upload_image(request):
     else:
         form = UploadImageForm()
     return render(request, 'upload_image.html', {"form": form})
+
+
 
