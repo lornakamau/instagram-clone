@@ -422,7 +422,6 @@ footer .container{
 .main {
     margin-top: 7%;
     width: 100%;
-    background: #fafafa;
 }
 
 .section {
@@ -430,10 +429,10 @@ footer .container{
     margin-left: 13.5%;
     background: #fff;
     width: 47%;
-    height: 700px;
     border-radius: 4px;
     display: block;
     float: left;
+    margin-bottom: 60px;
 }
 
 .section2 {
@@ -590,7 +589,6 @@ footer .container{
     color: #999;
     font-size: 14px;
     line-height: 18px;
-    min-height: 56px;
     justify-content: center;
     margin-top: 4px;
 }
@@ -972,6 +970,9 @@ Media Queries Max-widths
 }
 .comment {
     display: none;
+}
+.comments .form-control{
+    border: 0px !important;
 }
 .submit {
     display: none;
