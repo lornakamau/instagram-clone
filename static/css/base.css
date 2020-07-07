@@ -1,4 +1,3 @@
- 
 * {
     margin: 0;
     padding: 0;
@@ -95,6 +94,9 @@ a{
     border-radius: 0.4rem;
 }
 
+.input-group .form-control{
+    z-index: 0 !important;
+}
 .form-btn{
     margin: 1rem 0 1.5rem;
     height: 3rem;
@@ -274,14 +276,14 @@ footer .container{
 
 
 
-
-/* HOME */
+/*
 
 .top {
    
     background-color: #fff;
     border-bottom: 1px solid #dbdbdb;
-    height: 77px;
+    height: 6rem;
+    min-height: 6rem;
     position: relative;
     top: 0;
     width: 100%;
@@ -290,7 +292,8 @@ footer .container{
 }
 .top-items {
     display: flex;
-    height: 77px;
+    height: 6rem;
+    min-height: 6rem;
     max-width: 975px;
     padding: 26px 20px;
     justify-content: space-evenly;
@@ -377,7 +380,6 @@ footer .container{
     opacity: 0.8;
 }
 
-                /* Statuses */
 .statuses {
     height: 120px;
     outline: 0;
@@ -416,9 +418,6 @@ footer .container{
     width: 60px;
     border-radius: 50%;
 }
-
-                /* page body */
-
 .main {
     margin-top: 7%;
     width: 100%;
@@ -508,6 +507,7 @@ footer .container{
 .upload-content {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .upload-actions {
@@ -624,14 +624,17 @@ footer .container{
     padding: 0;
     position: relative;
 }
-/* Aside section pc screen alone */
+.btn{
+    background-color: transparent;
+}
+
 
 .aside-section {
     display: flex;
     flex-direction: column;
     height: 850px;
     padding-left: 1%;
-    /* padding: 0; */
+    
     right: 0;
     width: 30%;
 }
@@ -703,7 +706,6 @@ footer .container{
     padding-top: 4px;
 }
 
-/* Aside 2: Stories */
 
 
 .aside2 {
@@ -833,15 +835,6 @@ footer .container{
     color: rgb(40, 94, 212);
 }
 
-/* Media Queries */
-
-/*
-Media Queries Max-widths
-    Tablets = 768px;
-    Phones  = 408px; 
-*/  
-
-/* iPad Pro */
 
 
 @media (max-width: 1024px) {
@@ -869,7 +862,6 @@ Media Queries Max-widths
 }
 
 
-/* tab Screen */
 
 @media (max-width: 768px) { 
     .top {
@@ -917,17 +909,13 @@ Media Queries Max-widths
 }
 
 
-
-
-/* Phone Screen */
-
 @media (max-width: 414px) {
     .search-box, .sb{
         display: none;
     }
-    /* .statuses {
+    .statuses {
         padding-top: 10%;
-    } */
+    } 
     .main {
         height: 2200px;
     }
@@ -971,9 +959,7 @@ Media Queries Max-widths
 .comment {
     display: none;
 }
-.comments .form-control{
-    border: 0px !important;
-}
+
 .submit {
     display: none;
 }
@@ -996,6 +982,5 @@ Media Queries Max-widths
 }
 
 }
-
-/* HOME */
+ HOME */
 
