@@ -1,1 +1,1 @@
-web: gunicorn picturesque.wsgi --log-file -
+web: gunicorn instagram.wsgi --log-file -
