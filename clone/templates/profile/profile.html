@@ -1,107 +1,126 @@
 {%extends 'base.html'%}
+{% load bootstrap3 %}
 {% load static %}
 {% block content %}
-  <main id="profile">
-    {% for prof in profile %}
-    <header>
-      <!--  Right col  -->
-      <div class="col-left">
-        {% if prof.profile_pic %}
-        <img class="user-img" style="width:200px; height:200px;object-fit: cover; margin-right: 10px; border-radius: 50%; "src="{{prof.profile_pic.url}}" alt="">
-        {% else %}
-        <img class="user-img" style="width:200px; height:200px;object-fit: cover;border-radius: 50%;" src="/static/images/user.png" alt="">
-        {% endif %}
-      </div>
-      <!-- Left Col  -->
-      <div class="col-right">
-        
-        <h1>{{prof.username}}</h1>
-        
-        <button>Follow</button>
-      </div>
-    </header>
-  
-    <article>
-      <p><strong>National Geographic</strong> Experience the world through the eyes of National Geographic photographers. www.natgeo.com/photography
-      </p>
-    </article>
-    
-    <aside>
-      <div class='col-stats'>
-        <strong>{{posts}}</strong>
-        <br/>
-        posts
-      </div>
-      <div class='col-stats'>
-        <strong>292</strong>
-        <br/>
-        followers
-      </div>
-      <div class='col-stats'>
-        <strong>8292</strong>
-        <br/>
-        following
-      </div>
-    </aside>
-    
-    <section>
-      <div>
-          <img src="http://res.cloudinary.com/paperhat7/image/upload/v1506619371/instagram-clone/natgeo-01.jpg
-  " alt="">
-      </div>
-      <div>   
-        <img src="  http://res.cloudinary.com/paperhat7/image/upload/v1506619371/instagram-clone/natgeo-02.jpg
-  " alt="">
-      </div>
-      <div>
-          <img src="http://res.cloudinary.com/paperhat7/image/upload/v1506619373/instagram-clone/natgeo-04.jpg
-  " alt="">
-    </section>
-    {% endfor %}
-  </main>
-  <footer>
-    <div class="container">
-        <nav class="footer-nav">
-            <ul>
-                <li>
-                    <a href="#">About us</a>
-                </li>
-                <li>
-                    <a href="#">Support</a>
-                </li>
-                <li>
-                    <a href="#">Press</a>
-                </li>
-                <li>
-                    <a href="#">Api</a>
-                </li>
-                <li>
-                    <a href="#">Jobs</a>
-                </li>
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-                <li>
-                    <a href="#">Terms</a>
-                </li>
-                <li>
-                    <a href="#">Directory</a>
-                </li>
-                <li>
-                    <a href="#">Profiles</a>
-                </li>
-                <li>
-                    <a href="#">Hashtags</a>
-                </li>
-                <li>
-                    <a href="#">Languages</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="copyright-notice">
-            &copy; 2020 Instagram
-        </div>
+<main id="profile">
+  {% for prof in profile %}
+  <header>
+    <!--  Right col  -->
+    <div class="col-left">
+      {% if prof.profile_pic %}
+      <img class="user-img"
+        style="width:200px; height:200px;object-fit: cover; margin-right: 10px; border-radius: 50%; "
+        src="{{prof.profile_pic.url}}" alt="">
+      {% else %}
+      <img class="user-img" style="width:200px; height:200px;object-fit: cover;border-radius: 50%;"
+        src="/static/images/user.png" alt="">
+      {% endif %}
     </div>
+    <!-- Left Col  -->
+    <div class="col-right">
+
+      <h1>{{prof.username}}</h1>
+      {% if follow_form %}
+      <form action="/profile/{{profile.id}}" method="post">
+        {%csrf_token%}
+
+        {% bootstrap_form follow_form%}
+        <input type="submit" class="btn btn-primary" name="follow" value="Follow">
+      </form>
+      {% endif %}
+      {% if unfollow_form %}
+      <form action="/profile/{{profile.id}}" method="post">
+        {%csrf_token%}
+
+        {% bootstrap_form unfollow_form%}
+        <input type="submit" class="btn btn-danger" name="unfollow" value="Unfollow">
+      </form>
+      {% endif %}
+      <button>Follow</button>
+    </div>
+  </header>
+
+  <article>
+    <p><strong>National Geographic</strong> Experience the world through the eyes of National Geographic photographers.
+      www.natgeo.com/photography
+    </p>
+  </article>
+
+  <aside>
+    <div class='col-stats'>
+      <strong>{{posts}}</strong>
+      <br />
+      posts
+    </div>
+    <div class='col-stats'>
+      <strong>292</strong>
+      <br />
+      followers
+    </div>
+    <div class='col-stats'>
+      <strong>8292</strong>
+      <br />
+      following
+    </div>
+  </aside>
+
+  <section>
+    <div>
+      <img src="http://res.cloudinary.com/paperhat7/image/upload/v1506619371/instagram-clone/natgeo-01.jpg
+  " alt="">
+    </div>
+    <div>
+      <img src="  http://res.cloudinary.com/paperhat7/image/upload/v1506619371/instagram-clone/natgeo-02.jpg
+  " alt="">
+    </div>
+    <div>
+      <img src="http://res.cloudinary.com/paperhat7/image/upload/v1506619373/instagram-clone/natgeo-04.jpg
+  " alt="">
+  </section>
+  {% endfor %}
+</main>
+<footer>
+  <div class="container">
+    <nav class="footer-nav">
+      <ul>
+        <li>
+          <a href="#">About us</a>
+        </li>
+        <li>
+          <a href="#">Support</a>
+        </li>
+        <li>
+          <a href="#">Press</a>
+        </li>
+        <li>
+          <a href="#">Api</a>
+        </li>
+        <li>
+          <a href="#">Jobs</a>
+        </li>
+        <li>
+          <a href="#">Privacy</a>
+        </li>
+        <li>
+          <a href="#">Terms</a>
+        </li>
+        <li>
+          <a href="#">Directory</a>
+        </li>
+        <li>
+          <a href="#">Profiles</a>
+        </li>
+        <li>
+          <a href="#">Hashtags</a>
+        </li>
+        <li>
+          <a href="#">Languages</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright-notice">
+      &copy; 2020 Instagram
+    </div>
+  </div>
 </footer>
-  {% endblock %}
-  
+{% endblock %}
