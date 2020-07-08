@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Image, Profile, Comment
-from .forms import UploadImageForm, EditBioForm
+from .forms import UploadImageForm, EditBioForm, FollowForm, UnfollowForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
