@@ -1,0 +1,1 @@
+web: gunicorn picturesque.wsgi --log-file -

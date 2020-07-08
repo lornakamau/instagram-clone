@@ -21,13 +21,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('clone.urls')),
+    url(r'^', include('clone.urls')),
     url('^accounts/register/',
         RegistrationView.as_view(success_url='/email'),
         name='django_registration_register'),
     url(r'^accounts/', include('django_registration.backends.one_step.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^logout/$', auth_views.LogoutView.as_view()),  
-    # url('accounts/login', LoginView.as_view(redirect_field_name ='/create_profile',success_url = '/create'), name = 'login'),
-    # url('accounts/logout',LogoutView.as_view(redirect_field_name ='/accounts/login'))
+    url('accounts/login', LoginView.as_view(redirect_field_name ='/',success_url = '/'), name = 'login'),
+    url('accounts/logout',LogoutView.as_view(redirect_field_name ='/accounts/login'))
 ]
