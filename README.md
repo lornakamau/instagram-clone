@@ -1,6 +1,6 @@
 [![codebeat badge](https://codebeat.co/badges/887ef638-c53a-4253-8809-a00b641a86e5)](https://codebeat.co/projects/github-com-lornakamau-instagram-clone-master)
 # Instagram
-#### Instagram - a clone of the popular Instagram application , 30/06/2020.
+#### Instagram - a clone of the popular Instagram application , 07/07/2020.
 #### By Lorna Kamau
 <img src="./static/images/landing.png"
      alt="landing"
