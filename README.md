@@ -6,7 +6,7 @@
      alt="landing"
      style="width=100%;" />
 ## Description
-An Instagram clone that allows user to upload images,follow other users to see their photos, like and comment on photos.
+A clone of the popular Instagram application. Users are able to upload images, follow other users to see their photos, like and comment on photos.
 
 ## Live link
 Visit the application on https://lorna-instagram.herokuapp.com/ .

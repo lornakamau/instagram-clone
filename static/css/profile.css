@@ -85,7 +85,9 @@
     justify-content: space-between;
     margin-bottom: 30px;
   } */
-  
+  #profile{
+    font-size: 1.4rem;
+  }
   #profile img{
     width: 100%;
     display: block;
